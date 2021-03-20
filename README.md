@@ -17,4 +17,4 @@ You can download the extension from the VSCode marketplace [here](https://market
 
 ## License
 
-Overshields is released under the [MIT License.](https://github.com/casperstorm/directory-files/blob/master/LICENSE)
+Directory-files is released under the [MIT License.](https://github.com/casperstorm/directory-files/blob/master/LICENSE)
