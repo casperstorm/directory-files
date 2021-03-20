@@ -6,7 +6,7 @@ import { Uri } from "vscode";
 export function activate(context: vscode.ExtensionContext) {
   let directoryFiles: string[] = [];
   const disposable = vscode.commands.registerCommand(
-    "directory-files.show",
+    "extension.showDirectoryFiles",
     async () => {
       let folder = vscode.window.activeTextEditor?.document.uri.fsPath
         .split("/")
