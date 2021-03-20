@@ -1,5 +1,9 @@
 {
 	"name": "directory-files",
+	"publisher": "casperstorm",
+	"repository": {
+		"url": "https://github.com/casperstorm/directory-files"
+	},
 	"displayName": "directory-files",
 	"description": "Show files in current directory",
 	"version": "0.0.1",
