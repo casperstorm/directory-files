@@ -1,27 +1,45 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import junk from "junk";
+import { Uri } from "vscode";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+var list: string[] = [];
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand(
+    "directory-files.helloWorld",
+    () => {
+      var folder = vscode.window.activeTextEditor?.document.uri.fsPath
+        .split("/")
+        .slice(0, -1)
+        .join("/");
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "directory-files" is now active!');
+      console.log("folder: ", folder);
+      if (folder) {
+        fs.promises.readdir(folder).then((files) => {
+          const filtered = files.filter(junk.not);
+          filtered.forEach((file) => {
+            const uri = Uri.joinPath(Uri.file(folder!), file);
+            if (!fs.lstatSync(uri.fsPath).isDirectory()) {
+              list.push(file);
+            }
+          });
+          vscode.window.showQuickPick(list, {}).then((selection) => {
+            list = [];
+            if (!selection || !folder) {
+              return;
+            }
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('directory-files.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+            const uri = Uri.joinPath(Uri.file(folder), selection);
+            vscode.window.showTextDocument(uri);
+          });
+        });
+      }
+    }
+  );
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from directory-files!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+  list = [];
+}
