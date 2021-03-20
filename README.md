@@ -12,6 +12,12 @@ Call `Show Files In Directory` to show a quick list with files from the director
 { "key": "cmd+e", "command": "extension.showDirectoryFiles" }
 ```
 
+## Settings
+
+| Settings Name                  | Description                         | Default value |
+| ------------------------------ | ----------------------------------- | :-----------: |
+| `directory-files.showFilePath` | Show file path next to the filename |     false     |
+
 ## Installation
 
 You can download the extension from the VSCode marketplace [here](https://marketplace.visualstudio.com/items?itemName=casperstorm.directory-files).

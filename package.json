@@ -7,7 +7,7 @@
 	"displayName": "Directory Files",
 	"description": "Show files in the directory relative to the current open file",
 	"icon": "resources/logo.png",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
@@ -19,6 +19,17 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Directory Files",
+			"properties": {
+				"directory-files.showFilePath": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show filepath next to the filename"
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "extension.showDirectoryFiles",
