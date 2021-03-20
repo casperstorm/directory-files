@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:directory-files.helloWorld"
+		"onCommand:directory-files.show"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "directory-files.helloWorld",
-				"title": "Hello World"
+				"command": "directory-files.show",
+				"title": "Show Files In Directory"
 			}
 		]
 	},

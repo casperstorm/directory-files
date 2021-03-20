@@ -3,10 +3,10 @@ import * as fs from "fs";
 import junk from "junk";
 import { Uri } from "vscode";
 
-var list: string[] = [];
 export function activate(context: vscode.ExtensionContext) {
+  let directoryFiles: string[] = [];
   let disposable = vscode.commands.registerCommand(
-    "directory-files.helloWorld",
+    "directory-files.show",
     async () => {
       var folder = vscode.window.activeTextEditor?.document.uri.fsPath
         .split("/")
@@ -23,12 +23,13 @@ export function activate(context: vscode.ExtensionContext) {
         const uri = Uri.joinPath(Uri.file(folder!), file);
         const stats = await fs.promises.lstat(uri.fsPath);
         if (stats.isFile()) {
-          list.push(file);
+          directoryFiles.push(file);
         }
       }
 
-      vscode.window.showQuickPick(list, {}).then((selection) => {
-        list = [];
+      vscode.window.showQuickPick(directoryFiles, {}).then((selection) => {
+        directoryFiles = [];
+
         if (!selection || !folder) {
           return;
         }
@@ -40,8 +41,4 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(disposable);
-}
-
-export function deactivate() {
-  list = [];
 }
