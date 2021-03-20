@@ -4,9 +4,10 @@
 	"repository": {
 		"url": "https://github.com/casperstorm/directory-files"
 	},
-	"displayName": "directory-files",
+	"displayName": "Directory Files",
 	"description": "Show files in the directory relative to the current open file",
-	"version": "0.0.3",
+	"icon": "resources/logo.png",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
