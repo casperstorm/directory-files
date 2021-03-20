@@ -4,13 +4,16 @@ Directory-files is a small VSCode extension which allow you to view the files in
 
 ![](https://github.com/casperstorm/directory-files/raw/master/resources/open-directories.gif)
 
-## How to use
+## Features
 
 Call `Show Files In Directory` to show a quick list with files from the current directory. Or you can add it to `settings.json` like this:
 
 ```json
 { "key": "cmd+e", "command": "extension.showDirectoryFiles" }
 ```
+## Installation
+
+You can download the extension from the VSCode marketplace [here](https://marketplace.visualstudio.com/items?itemName=casperstorm.directory-files).
 
 ## License
 
