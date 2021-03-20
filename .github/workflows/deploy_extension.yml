@@ -1,0 +1,13 @@
+on: workflow_dispatch
+name: Deploy Extension
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: lannonbr/vsce-action@master
+        with:
+          args: "publish -p $AZURE_TOKEN"
+        env:
+          AZURE_TOKEN: ${{ secrets.AZURE_TOKEN }}
