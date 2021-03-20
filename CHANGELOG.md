@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.0.5] - 2021-03-21
+
+- Setting to display filepath next to filename.
+
 ## [0.0.4] - 2021-03-21
 
 - Initial release.
